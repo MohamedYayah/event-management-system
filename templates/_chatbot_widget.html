@@ -1,0 +1,48 @@
+<!-- Modular Chatbot Widget Include -->
+<style>
+#chat-fab { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background: #007bff; color: #fff; border: none; box-shadow: 0 2px 8px #0002; cursor: pointer; z-index: 9999; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+#chat-widget { position: fixed; bottom: 90px; right: 24px; width: 320px; z-index: 9999; background: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px #0002; display: none; flex-direction: column; }
+#chat-header { background: #007bff; color: #fff; padding: 8px 12px; border-radius: 8px 8px 0 0; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+#chat-log { height: 200px; overflow: auto; padding: 10px; font-size: 14px; background: #f9f9f9; }
+#chat-close { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; margin-left: 8px; }
+</style>
+<button id="chat-fab" title="Chat with AI" onclick="openChatWidget()">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#007bff"/><path d="M7 10C7 8.34315 8.34315 7 10 7H14C15.6569 7 17 8.34315 17 10V14C17 15.6569 15.6569 17 14 17H10C8.34315 17 7 15.6569 7 14V10Z" fill="white"/><circle cx="9.5" cy="12" r="1.5" fill="#007bff"/><circle cx="14.5" cy="12" r="1.5" fill="#007bff"/></svg>
+</button>
+<div id="chat-widget">
+  <div id="chat-header">AI Assistant <button id="chat-close" onclick="closeChatWidget()">&times;</button></div>
+  <div id="chat-log"></div>
+  <div style="display:flex;border-top:1px solid #eee;">
+    <input type="text" id="chat-input" placeholder="Type your message..." style="flex:1;border:none;padding:8px;font-size:14px;outline:none;">
+    <button onclick="sendMessage()" style="background:#007bff;color:#fff;border:none;padding:8px 16px;cursor:pointer;">Send</button>
+  </div>
+</div>
+<script>
+function openChatWidget() {
+  document.getElementById('chat-widget').style.display = 'flex';
+  document.getElementById('chat-fab').style.display = 'none';
+  setTimeout(() => { document.getElementById('chat-input').focus(); }, 100); }
+function closeChatWidget() {
+  document.getElementById('chat-widget').style.display = 'none';
+  document.getElementById('chat-fab').style.display = 'flex'; }
+function appendMessage(sender, text) {
+    const log = document.getElementById('chat-log');
+    log.innerHTML += `<b>${sender}:</b> ${text}<br>`;
+    log.scrollTop = log.scrollHeight; }
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+    appendMessage('You', message);
+    input.value = '';
+    fetch('/chatbot', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: message})
+    })
+    .then(response => response.json())
+    .then(data => appendMessage('Bot', data.response))
+    .catch(() => appendMessage('Bot', 'Sorry, there was an error contacting the assistant.')); }
+document.getElementById('chat-input').addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') sendMessage(); });
+</script>

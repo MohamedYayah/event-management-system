@@ -1,0 +1,11 @@
+Flask
+Flask-Login
+scikit-learn
+pandas
+numpy
+flask-wtf>=1.0.0
+wtforms>=3.0.0
+email_validator>=1.0.0
+mediapipe
+opencv-python
+gunicorn

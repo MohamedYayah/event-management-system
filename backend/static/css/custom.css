@@ -1,0 +1,166 @@
+/* Custom styles for Event Management System */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(135deg, #f5fafd 0%, #dbeafe 100%);
+}
+
+/* Table row hover */
+.table-hover tbody tr:hover {
+  background-color: #e0e7ff !important;
+  transition: background 0.2s;
+}
+
+/* App card polish */
+.app-card {
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.12);
+  border-radius: 2rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 3px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  position: relative;
+}
+
+/* Badge polish */
+.badge {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 4px #0001;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Button polish */
+.btn, .btn-sm, .btn-primary, .btn-success, .btn-danger, .btn-warning, .btn-outline-info {
+  border-radius: 2rem !important;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Spinner polish */
+#global-spinner .spinner-border {
+  box-shadow: 0 2px 16px #6c63ff33;
+}
+
+/* Toast polish */
+.toast {
+  border-radius: 1.2rem;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 24px 0 rgba(34,60,80,0.12);
+  background: #fff;
+  color: #222;
+}
+.toast.text-bg-success {
+  background: #e6ffed;
+  color: #188038;
+}
+.toast.text-bg-danger {
+  background: #ffe6e6;
+  color: #c00;
+}
+.toast.text-bg-info {
+  background: #e6f4ff;
+  color: #0277bd;
+}
+
+/* Footer and modal polish */
+.footer {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1rem;
+  background: #f8fafc;
+  border-top: 2px solid #e0e7ff;
+}
+.modal-content {
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(34,60,80,0.10);
+}
+
+.app-card {
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.app-card:hover {
+  box-shadow: 0 16px 48px 0 rgba(31,38,135,0.18);
+  transform: translateY(-4px) scale(1.01);
+}
+
+.btn-primary, .btn-success, .btn-danger, .btn-warning {
+  border-radius: 2rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-warning:hover {
+  filter: brightness(1.1);
+}
+
+input, select, textarea {
+  border-radius: 1rem !important;
+  border: 1px solid #dbeafe !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px 0 rgba(31,38,135,0.07);
+  border: none;
+}
+
+.navbar {
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.table {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #fff;
+}
+.table th {
+  background: #e0e7ff;
+  font-weight: 600;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #f5fafd;
+}
+
+.alert {
+  border-radius: 1.5rem;
+  font-size: 1.1rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f5fafd;
+}
+::-webkit-scrollbar-thumb {
+  background: #dbeafe;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+  color: #888;
+  font-size: 1rem;
+  background: transparent;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .app-card {
+    padding: 1rem;
+  }
+  .navbar {
+    border-radius: 1rem;
+  }
+}
